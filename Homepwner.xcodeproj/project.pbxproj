@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		81C38D2921E836DB00941EED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38D2821E836DB00941EED /* AppDelegate.swift */; };
-		81C38D2B21E836DB00941EED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38D2A21E836DB00941EED /* ViewController.swift */; };
 		81C38D2E21E836DB00941EED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C38D2C21E836DB00941EED /* Main.storyboard */; };
 		81C38D3021E836DD00941EED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C38D2F21E836DD00941EED /* Assets.xcassets */; };
 		81C38D3321E836DD00941EED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C38D3121E836DD00941EED /* LaunchScreen.storyboard */; };
 		81C38D3E21E836DD00941EED /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38D3D21E836DD00941EED /* HomepwnerTests.swift */; };
 		81C38D4921E836DD00941EED /* HomepwnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38D4821E836DD00941EED /* HomepwnerUITests.swift */; };
+		81C38D5721E83C6A00941EED /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38D5621E83C6A00941EED /* ItemsViewController.swift */; };
+		81C38D5921E83D7D00941EED /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C38D5821E83D7D00941EED /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		81C38D2521E836DB00941EED /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C38D2821E836DB00941EED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81C38D2A21E836DB00941EED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81C38D2D21E836DB00941EED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81C38D2F21E836DD00941EED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81C38D3221E836DD00941EED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		81C38D4421E836DD00941EED /* HomepwnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomepwnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C38D4821E836DD00941EED /* HomepwnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerUITests.swift; sourceTree = "<group>"; };
 		81C38D4A21E836DD00941EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81C38D5621E83C6A00941EED /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		81C38D5821E83D7D00941EED /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				81C38D2821E836DB00941EED /* AppDelegate.swift */,
-				81C38D2A21E836DB00941EED /* ViewController.swift */,
 				81C38D2C21E836DB00941EED /* Main.storyboard */,
 				81C38D2F21E836DD00941EED /* Assets.xcassets */,
 				81C38D3121E836DD00941EED /* LaunchScreen.storyboard */,
 				81C38D3421E836DD00941EED /* Info.plist */,
+				81C38D5621E83C6A00941EED /* ItemsViewController.swift */,
+				81C38D5821E83D7D00941EED /* Item.swift */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -256,7 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81C38D2B21E836DB00941EED /* ViewController.swift in Sources */,
+				81C38D5721E83C6A00941EED /* ItemsViewController.swift in Sources */,
+				81C38D5921E83D7D00941EED /* Item.swift in Sources */,
 				81C38D2921E836DB00941EED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
