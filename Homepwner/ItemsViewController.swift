@@ -93,7 +93,7 @@ class ItemsViewController : UITableViewController {
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
             /* Delete handler for action sheet */
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+            let deleteAction = UIAlertAction(title: "Remove", style: .destructive, handler: { (action) -> Void in
                 
                 /* Remove item from store */
                 self.itemStore.removeItem(item)
