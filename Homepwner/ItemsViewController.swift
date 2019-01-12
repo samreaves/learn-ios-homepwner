@@ -12,7 +12,16 @@ class ItemsViewController : UITableViewController {
     var itemStore: ItemStore!
     
     @IBAction func addNewItem(_ sender: UIButton) {
+        /* Create a new item and add it to the store */
+        let newItem = itemStore.createItem()
         
+        /* Figure out where that item is in the array */
+        if let index = itemStore.allItems.index(of: newItem) {
+            let indexPath = IndexPath(row: index, section: 0)
+            
+            /* Insert the new row into the table */
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
     }
     
     @IBAction func toggleEditingMode(_ sender: UIButton) {
