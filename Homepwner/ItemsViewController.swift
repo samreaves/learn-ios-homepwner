@@ -43,6 +43,11 @@ class ItemsViewController : UITableViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.rowHeight = 65
+    }
+    
     /* Inform ItemsViewController's tableView how many items to display in the table */
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
@@ -55,8 +60,8 @@ class ItemsViewController : UITableViewController {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         /* Get a reused or new instance of UITableViewCell with default appearance */
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
-                                                 for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
+                                                 for: indexPath) as! ItemCell
         
         /*
          * Set the text on the cell with the description of the item
@@ -65,10 +70,19 @@ class ItemsViewController : UITableViewController {
          */
         let item = itemStore.allItems[indexPath.row]
  
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "\(item.valueInDollars)"
+        cell.nameLabel.text = item.name
+        cell.valueLabel.text = "\(getDollarAmount(item.valueInDollars))"
+        cell.serialNumberLabel.text = item.serialNumber
         
         return cell
+    }
+    
+    func getDollarAmount(_ valueInDollars: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = .current
+        formatter.numberStyle = .currency
+        return formatter.string(from: NSNumber(value: valueInDollars))!
+        
     }
     
      /* Inform ItemsViewController's tableView how to delete items */
