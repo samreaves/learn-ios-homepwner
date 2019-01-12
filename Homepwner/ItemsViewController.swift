@@ -71,7 +71,7 @@ class ItemsViewController : UITableViewController {
         return cell
     }
     
-     /* Inform ItemsViewController's tableView how each cell should appear */
+     /* Inform ItemsViewController's tableView how to delete items */
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
@@ -86,5 +86,14 @@ class ItemsViewController : UITableViewController {
             /* Delete the row from the table */
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    /* Inform ItemViewController's tableView how to move items */
+    override func tableView(_ tableView: UITableView,
+                            moveRowAt sourceIndexPath: IndexPath,
+                            to destinationIndexPath: IndexPath) {
+        
+        /* Update the model */
+        itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
 }
