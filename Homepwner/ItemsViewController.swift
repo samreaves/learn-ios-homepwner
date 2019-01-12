@@ -45,7 +45,8 @@ class ItemsViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 65
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 65
     }
     
     /* Inform ItemsViewController's tableView how many items to display in the table */
@@ -74,9 +75,15 @@ class ItemsViewController : UITableViewController {
         cell.valueLabel.text = "\(getDollarAmount(item.valueInDollars))"
         cell.serialNumberLabel.text = item.serialNumber
         
+        /* Adjust valueLabel font color to be red or green based on item value */
+        cell.valueLabel.textColor = item.valueInDollars >= 50
+            ? UIColor(red:0.00, green:0.81, blue:0.00, alpha:1.0)
+            : UIColor.red
+        
         return cell
     }
     
+    /* Retrieves value in dollars for cell formatted with dollars and cents */
     func getDollarAmount(_ valueInDollars: Int) -> String {
         let formatter = NumberFormatter()
         formatter.locale = .current
