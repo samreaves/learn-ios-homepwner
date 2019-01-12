@@ -70,4 +70,21 @@ class ItemsViewController : UITableViewController {
         
         return cell
     }
+    
+     /* Inform ItemsViewController's tableView how each cell should appear */
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        
+        /* If the table view is asking to commit a delete command */
+        if editingStyle == .delete {
+            
+            /* Remove item from itemStore */
+            let item = itemStore.allItems[indexPath.row]
+            itemStore.removeItem(item)
+            
+            /* Delete the row from the table */
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
