@@ -140,4 +140,25 @@ class ItemsViewController : UITableViewController {
         /* Update the model */
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
+    
+    /* Prepare item for editing on detail view */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        /* If the triggered segue is the showItem segue */
+        switch segue.identifier {
+        case "showItem"?:
+            
+            /* Figure out which row was tapped */
+            if let row = tableView.indexPathForSelectedRow?.row {
+                
+                /* Get the item from the selected row to pass to ItemDetailViewController */
+                let item = itemStore.allItems[row]
+                let itemDetailViewController = segue.destination as! ItemDetailViewController
+                itemDetailViewController.item = item
+            }
+            
+        default:
+            preconditionFailure("Unexpected Segue Identifier")
+        }
+    }
 }
