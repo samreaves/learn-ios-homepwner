@@ -181,6 +181,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="FSl-uK-xAg" firstAttribute="leading" secondItem="x2G-EQ-bfX" secondAttribute="leading" id="BuF-jR-C9s"/>
                                     <constraint firstItem="Tep-dt-FmP" firstAttribute="leading" secondItem="FSl-uK-xAg" secondAttribute="leading" id="WJe-L7-te0"/>
@@ -188,6 +189,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="m2e-zM-lb6" firstAttribute="bottom" secondItem="Zzr-Dx-1fF" secondAttribute="bottom" constant="8" id="B4Y-JF-KL1"/>
                             <constraint firstItem="Zzr-Dx-1fF" firstAttribute="top" secondItem="m2e-zM-lb6" secondAttribute="top" constant="8" id="ekz-QQ-EbH"/>
@@ -195,6 +197,9 @@
                             <constraint firstItem="Zzr-Dx-1fF" firstAttribute="leading" secondItem="m2e-zM-lb6" secondAttribute="leading" constant="10" id="zRm-IT-38T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m2e-zM-lb6"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NuQ-aM-AiE" appends="YES" id="8D7-Jm-wog"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="8mH-m2-jVY" id="eAt-ZE-Wvf"/>
@@ -204,6 +209,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZP-2u-Cfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NuQ-aM-AiE">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="VRU-6h-zYa" id="AmU-oG-Sql"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1704.8" y="83.208395802098963"/>
         </scene>

@@ -14,6 +14,12 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
     
+    /* On tap of background, end edit mode of any active UITextField */
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    
     var item: Item!
     
     /* Number formatter for value in dollars */
@@ -46,6 +52,9 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate {
     /* Just before view controller's view disappears, save user input to ItemStore */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        /* End edit mode of any active UITextField */
+        view.endEditing(true)
         
         /* Save changes to item */
         item.name = nameField.text ?? ""
