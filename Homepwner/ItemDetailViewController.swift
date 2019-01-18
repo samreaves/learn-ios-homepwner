@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailViewController : UIViewController {
+class ItemDetailViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialField: UITextField!
     @IBOutlet var valueField: UITextField!
@@ -33,6 +33,7 @@ class ItemDetailViewController : UIViewController {
         return formatter
     }()
     
+    /* Just before view controller's view appears, load item information from ItemStore */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -42,6 +43,7 @@ class ItemDetailViewController : UIViewController {
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
     }
     
+    /* Just before view controller's view disappears, save user input to ItemStore */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -55,5 +57,11 @@ class ItemDetailViewController : UIViewController {
         } else {
             item.valueInDollars = 0
         }
+    }
+    
+    /* Just before return key on keyboard acts normally, have text field resign first responder */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
