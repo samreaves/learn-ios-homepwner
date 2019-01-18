@@ -20,7 +20,11 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate {
     }
     
     
-    var item: Item!
+    var item: Item! {
+        didSet {
+            navigationItem.title = item.name
+        }
+    }
     
     /* Number formatter for value in dollars */
     let numberFormatter: NumberFormatter = {

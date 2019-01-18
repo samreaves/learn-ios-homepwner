@@ -11,7 +11,7 @@ import UIKit
 class ItemsViewController : UITableViewController {
     var itemStore: ItemStore!
     
-    @IBAction func addNewItem(_ sender: UIButton) {
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         /* Create a new item and add it to the store */
         let newItem = itemStore.createItem()
         
@@ -24,31 +24,20 @@ class ItemsViewController : UITableViewController {
         }
     }
     
-    @IBAction func toggleEditingMode(_ sender: UIButton) {
-        /* If currently in editing mode */
-        if isEditing {
-            
-            /* Change the text to inform user of state */
-            sender.setTitle("Edit", for: .normal)
-            
-            /* Turn off editing mode */
-            setEditing(false, animated: true)
-        }
-        else {
-            /* Change the text to inform user of state */
-            sender.setTitle("Done", for: .normal)
-            
-            /* Turn on editing mode */
-            setEditing(true, animated: true)
-        }
+    /* On view controller initialization, programattically add Edit left bar button item  */
+    override required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
+    /* On view load, set table cell heights */
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 65
     }
     
+    /* Just before view appears, rerender table data */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
