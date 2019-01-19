@@ -23,6 +23,7 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate, UIImageP
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         
         /* If the device has a camera, take a picture. Otherwise, source from the photo library */
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -40,7 +41,7 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate, UIImageP
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         /* Get picked image from dictionary */
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         
         /* Store the image */
         imageStore.setImage(image, forKey: item.itemKey)
