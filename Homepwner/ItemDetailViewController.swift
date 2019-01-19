@@ -15,11 +15,17 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     
-    /* On tap of background, end edit mode of any active UITextField */
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
+    // MARK: - Item and ImageStore dependencies
+    var item: Item! {
+        didSet {
+            navigationItem.title = item.name
+        }
     }
     
+    var imageStore: ImageStore!
+    
+    
+    // MARK: - ImageViewController Logic
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -53,14 +59,7 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate, UIImageP
         dismiss(animated: true, completion: nil)
     }
     
-    var item: Item! {
-        didSet {
-            navigationItem.title = item.name
-        }
-    }
-    
-    var imageStore: ImageStore!
-    
+    // MARK: - Formatters
     /* Number formatter for value in dollars */
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -78,6 +77,8 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate, UIImageP
         return formatter
     }()
     
+    
+    // MARK: - View Logic
     /* Just before view controller's view appears, load item information from ItemStore */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -109,6 +110,13 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate, UIImageP
         } else {
             item.valueInDollars = 0
         }
+    }
+    
+    
+    // MARK: - Dismiss Keyboard Logic
+    /* On tap of background, end edit mode of any active UITextField */
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     /* Just before return key on keyboard acts normally, have text field resign first responder */
