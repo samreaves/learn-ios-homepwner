@@ -89,8 +89,9 @@ class ItemDetailViewController : UIViewController, UITextFieldDelegate, UIImageP
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
 
         /* Load image and set image view's image */
-        let imageToDisplay = imageStore.image(forKey: item.itemKey)
-        imageView.image = imageToDisplay
+        if let imageToDisplay = imageStore.image(forKey: item.itemKey) {
+            imageView.image = imageToDisplay
+        }
     }
     
     /* Just before view controller's view disappears, save user input to ItemStore */
