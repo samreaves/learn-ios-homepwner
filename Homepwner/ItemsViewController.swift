@@ -26,7 +26,7 @@ class ItemsViewController : UITableViewController {
     }
     
     /* On view controller initialization, programattically add Edit left bar button item  */
-    override required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         navigationItem.leftBarButtonItem = editButtonItem
     }
