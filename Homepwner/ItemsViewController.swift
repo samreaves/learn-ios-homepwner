@@ -10,6 +10,7 @@ import UIKit
 
 class ItemsViewController : UITableViewController {
     var itemStore: ItemStore!
+    var imageStore: ImageStore!
     
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         /* Create a new item and add it to the store */
@@ -25,7 +26,7 @@ class ItemsViewController : UITableViewController {
     }
     
     /* On view controller initialization, programattically add Edit left bar button item  */
-    override required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         navigationItem.leftBarButtonItem = editButtonItem
     }
@@ -114,6 +115,9 @@ class ItemsViewController : UITableViewController {
                 /* Remove item from store */
                 self.itemStore.removeItem(item)
                 
+                /* Remove item's image */
+                self.imageStore.deleteImage(forKey: item.itemKey)
+                
                 /* Delete the row from the table */
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             })
@@ -150,6 +154,7 @@ class ItemsViewController : UITableViewController {
                 let item = itemStore.allItems[row]
                 let itemDetailViewController = segue.destination as! ItemDetailViewController
                 itemDetailViewController.item = item
+                itemDetailViewController.imageStore = imageStore
             }
             
         default:
