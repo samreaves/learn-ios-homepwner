@@ -88,19 +88,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NF8-xr-fOV">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="3N3-B3-EvE"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="camera" id="dyf-tr-JOG">
-                                        <connections>
-                                            <action selector="takePicture:" destination="VRU-6h-zYa" id="GRS-bU-vAL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zzr-Dx-1fF">
                                 <rect key="frame" x="10" y="72" width="355" height="543"/>
                                 <subviews>
@@ -176,14 +163,23 @@
                                 </subviews>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="8mH-m2-jVY" firstAttribute="top" secondItem="1QZ-xK-XBe" secondAttribute="bottom" constant="8" id="0vm-wK-dPR"/>
                                     <constraint firstItem="FSl-uK-xAg" firstAttribute="leading" secondItem="x2G-EQ-bfX" secondAttribute="leading" id="BuF-jR-C9s"/>
-                                    <constraint firstItem="1QZ-xK-XBe" firstAttribute="top" secondItem="JTv-qi-Zdf" secondAttribute="bottom" constant="8" id="K9b-Lh-o3o"/>
                                     <constraint firstItem="Tep-dt-FmP" firstAttribute="leading" secondItem="FSl-uK-xAg" secondAttribute="leading" id="WJe-L7-te0"/>
-                                    <constraint firstItem="rVV-gR-rWF" firstAttribute="top" secondItem="8mH-m2-jVY" secondAttribute="bottom" constant="8" id="gr1-Z5-FsS"/>
-                                    <constraint firstItem="JTv-qi-Zdf" firstAttribute="top" secondItem="G2U-rL-C7B" secondAttribute="bottom" constant="8" id="jGE-FD-sfS"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NF8-xr-fOV">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3N3-B3-EvE"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="dyf-tr-JOG">
+                                        <connections>
+                                            <action selector="takePicture:" destination="VRU-6h-zYa" id="GRS-bU-vAL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
