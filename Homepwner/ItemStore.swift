@@ -13,6 +13,29 @@ class ItemStore {
     /* Local cache of items */
     var allItems = [Item]()
     
+    /* URL app calls to save and retreive data from sandbox */
+    let itemArchiveURL: URL = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        
+        return documentDirectory.appendingPathComponent("items.archive")
+    }()
+    
+    /* Load items on init */
+    init() {
+        
+        do {
+            if let nsData = NSData(contentsOfFile: itemArchiveURL.path) {
+                let data = Data(referencing:nsData)
+                if let possibleObject = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Item] {
+                    allItems = possibleObject
+                }
+            }
+        } catch {
+            print("Could not load items from file")
+        }
+    }
+    
     /* Creates random item and inserts into the store */
     @discardableResult func createItem() -> Item {
         let item = Item(random: true)
@@ -45,5 +68,20 @@ class ItemStore {
         
         /* Insert the item into its new location within the store */
         allItems.insert(movedItem, at: toIndex)
+    }
+    
+    /* Save ItemStore to disk on close of the app */
+    func saveChanges() -> Bool {
+        print("Saving items to \(itemArchiveURL.path)")
+
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: allItems, requiringSecureCoding: false)
+            try data.write(to: itemArchiveURL)
+            return true
+        }
+        catch {
+            print("Couldn't save data")
+            return false
+        }
     }
 }
