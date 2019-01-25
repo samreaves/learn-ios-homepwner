@@ -84,19 +84,4 @@ class ItemStore {
             return false
         }
     }
-    
-    /* Load ItemStore items from disk on open of the app */
-//    func loadChanges() -> Data {
-//        print("Saving items to \(itemArchiveURL.path)")
-//
-//        do {
-//            let data = try NSKeyedUnarchiver.archivedData(withRootObject: allItems, requiringSecureCoding: false)
-//            try data.write(to: itemArchiveURL)
-//            return true
-//        }
-//        catch {
-//            print("Couldn't save data")
-//            return false
-//        }
-//    }
 }
